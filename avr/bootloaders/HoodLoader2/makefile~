@@ -54,8 +54,7 @@ HOODLOADER2_OPTS += -DBAUDRATE_CDC_BOOTLOADER=57600
 HOODLOADER2_OPTS += -DDOUBLE_TAB_RESET_TO_BOOTLOADER=true
 
 # Select if you want to start the bootloader when powered on (plugged in the usb cable)
-HOODLOADER2_OPTS += -DPOWER_ON_TO_BOOTLOADER=false
-
+HOODLOADER2_OPTS += -DPOWER_ON_TO_BOOTLOADER=true
 
 # Bootkey locations
 # 2nd Bootkey is not used for 32u4 devices (due to flash size)
@@ -64,7 +63,7 @@ HOODLOADER2_OPTS += -DPOWER_ON_TO_BOOTLOADER=false
 # Default 32u4 Bootkey was 0x8000 as 16 bit, bit an 8 bit check is enough normally
 # 0x280 was the default bootkey for HL2.0.4 and older
 HOODLOADER2_OPTS += -DBOOTKEY=RAMEND
-HOODLOADER2_OPTS += -DSECOND_BOOTKEY=0x280
+HOODLOADER2_OPTS += -DSECOND_BOOTKEY=0x8000
 
 
 # Add an offset of 256 + 128 bytes to RAMSTART for the ringbuffers

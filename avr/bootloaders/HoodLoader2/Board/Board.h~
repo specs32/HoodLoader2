@@ -147,20 +147,19 @@ extern "C" {
 			{
 				// We use = here since the pins should be input/low anyways.
 				// This saves us some more bytes for flash
-				DDRD = LEDMASK_TX | (1 << 6) | AVR_RESET_LINE_MASK;
+				DDRD = LEDMASK_TX | (1 << PD3) | AVR_RESET_LINE_MASK;
 			 	// Results in sbi instructions
 				DDRB  |= LEDMASK_RX;
-				PORTE |= AVR_RESET_LINE_MASK;
-				PORTE |= (1 << PE6);
+				PORTD |= AVR_RESET_LINE_MASK;
+				PORTD |= (1 << PD2);
 			}
 			
 			static inline void Board_Reset(bool reset)
 			{
 				if (reset)
-					AVR_RESET_LINE_PORT |= AVR_RESET_LINE_MASK;
+					AVR_RESET_LINE_PORT &= ~AVR_RESET_LINE_MASK;
 				else
-					AVR_RESET_LINE_PORT &= ~AVR_RESET_LINE_MASK;					
-					
+					AVR_RESET_LINE_PORT |= AVR_RESET_LINE_MASK;
 			}
 			
 			static inline void Board_Erase(bool erase)
